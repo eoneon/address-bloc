@@ -10,7 +10,7 @@ class AddressBook
 
   def add_entry(name, phone_number, email)
 
-    index = 0 #insertion index - prepend list?
+    index = 0 #start index for inserting single entry into array
     entries.each do |entry|
       if name < entry.name #we compare name with the name of the current entry, if name lexicographically proceeds entry.name, we've found the index to insert at, otherwise increment index and continue comparing with other entries
         break
@@ -39,7 +39,9 @@ class AddressBook
 
     #iterate over CSV::Table object's rows, then create hash for each row, then convert each row_hash to an Entry using add_entry
     csv.each do |row|
+      #converts each to row to a hash - associative array
       row_hash = row.to_hash
+      #assign value to be passed to method based on hash value
       add_entry(row_hash["name"], row_hash["phone_number"], row_hash["email"])
     end
   end
@@ -71,4 +73,12 @@ class AddressBook
      return nil
   end
 
+  def iterative_search(name)
+    entries.each do |entry|
+      if name == entry.name 
+        return name
+      end
+    end
+    return nil
+  end
 end
