@@ -71,7 +71,7 @@ class MenuController
     name = gets.chomp
     print "Phone number: "
     phone = gets.chomp
-    print = "Email: " #not printing
+    print "Email: " #not printing
     email = gets.chomp
 
     address_book.add_entry(name, phone, email)
@@ -111,10 +111,6 @@ class MenuController
         main_menu
       end
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Checkpoint-23-menu
       begin
         entry_count = address_book.import_from_csv(file_name).count
         system "clear"
@@ -134,6 +130,7 @@ class MenuController
     selection = gets.chomp #chomp removes trailing white space - "m " or "m\n" won't match "m"
 
     case selection
+
       when "n"
 
       when "d"
@@ -154,7 +151,7 @@ class MenuController
     end
   end
 
-  def entry_submenu(entry)
+  def edit_entry(entry)
     print "Updated name: "
     name = gets.chomp
     print "Updated phone number: "
@@ -201,12 +198,20 @@ class MenuController
     puts "e - edit this entry"
     puts "m - return to main_menu"
 
-    selection gets.chomp
+    selection = gets.chomp
 
     case selection
       when "d"
+        system "clear"
+        delete_entry(entry)
+        main_menu
       when "e"
+        edit_entry(entry)
+        system "clear"
+        main_menu
       when "m"
+        system "clear"
+        main_menu
       else
         system "clear"
         puts "#{selection} is not a valid input"
