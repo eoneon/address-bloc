@@ -112,6 +112,10 @@ class MenuController
         main_menu
       end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Checkpoint-23-menu
       begin
         entry_count = address_book.import_from_csv(file_name).count
         system "clear"
@@ -152,8 +156,21 @@ class MenuController
   end
 
   def entry_submenu(entry)
-    address_book.entries.delete(entry)
-    puts "#{entry.name} has been deleted"
+    print "Updated name: "
+    name = gets.chomp
+    print "Updated phone number: "
+    phone_number = gets.chomp
+    print "Updated email: "
+    email = gets.chomp
+
+    #!attribute.empty? - set only if valid attribute read from user input
+    entry.name = name if !name.empty?
+    entry.phone_number = phone_number if !phone_number.empty?
+    entry.email = email if !email.empty?
+    system "clear"
+
+    puts "Updated entry:"
+    puts entry
   end
 
   def delete_entry(entry)
