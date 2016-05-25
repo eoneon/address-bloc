@@ -14,6 +14,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - Detenate all entries!"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -39,6 +40,10 @@ class MenuController
       when 5
         puts "Good-bye!"
         exit(0) #0 signals the program is exiting withot error
+      when 6
+        system "clear"
+        read_csv
+        main_menu
 
       else #catches invalid input
         system "clear"
