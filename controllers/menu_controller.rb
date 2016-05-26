@@ -14,6 +14,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - Nuke everything!"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -41,7 +42,8 @@ class MenuController
         exit(0) #0 signals the program is exiting withot error
       when 6
         system "clear"
-        read_csv
+        address_book.nuke_entries
+        puts "You just deleted EVERYTHING!!!"
         main_menu
 
       else #catches invalid input
@@ -172,6 +174,12 @@ class MenuController
   def delete_entry(entry)
     address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted"
+  end
+
+  def nuke
+    address_book.entries.each do |entry|
+      entry.delete #deletes everything but Bob and Sally
+    end
   end
 
   def edit_entry(entry)

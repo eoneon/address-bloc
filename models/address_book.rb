@@ -22,13 +22,13 @@ class AddressBook
   end
 
   def remove_entry(name, phone_number, email)
-
-    index = 0
-    entries.each do |entry|
-      if name == entry.name
-        entries.delete(0)
-      end
+    entries.delete_if do |entry|
+      entry.name == name && entry.phone_number = phone_number && entry.email == email
     end
+  end
+
+  def nuke
+    entries.delete_if true
   end
 
   def import_from_csv(file_name)
@@ -47,36 +47,12 @@ class AddressBook
   end
 
   #searches AddressBook for a specific entry by name
-  def binary_search(name)
 
-    #save index of leftmost and rightmost items in entries array
-    lower = 0
-    upper = entries.length - 1
-
-    #loop while lower index is <= to rightmost index
-     while lower <= upper
-
-       #save mid point rounded down
-       mid = (lower + upper) / 2
-       #retrieve name at middle index
-       mid_name = entries[mid].name
-
-       if name == mid_name
-         return entries[mid]
-       elsif name < mid_name
-         upper = mid - 1
-       elsif name > mid_name
-         lower = mid + 1
-       end
-     end
-
-     return nil
-  end
 
   def iterative_search(name)
     @entries.each do |entry|
       if name == entry.name
-        return entry  
+        return entry
       end
     end
     return nil
