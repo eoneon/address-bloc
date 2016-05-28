@@ -42,7 +42,7 @@ class MenuController
         exit(0) #0 signals the program is exiting withot error
       when 6
         system "clear"
-        address_book.nuke_entries
+        address_book.nuke
         puts "You just deleted EVERYTHING!!!"
         main_menu
 
@@ -90,7 +90,7 @@ class MenuController
     name = gets.chomp
 
     #search address_book which returns match or nil
-    match = address_book.binary_search(name)
+    match = address_book.iterative_search(name)
     system "clear"
 
     #if search returned match - call helper method to display list of operations that can be performed on Entry

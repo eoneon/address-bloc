@@ -28,7 +28,7 @@ class AddressBook
   end
 
   def nuke
-    entries.delete_if true
+    entries.delete_if { |entry| true }
   end
 
   def import_from_csv(file_name)
@@ -52,7 +52,7 @@ class AddressBook
   def iterative_search(name)
     @entries.each do |entry|
       if name == entry.name
-        return entry
+        return entry.name
       end
     end
     return nil
