@@ -28,7 +28,7 @@ class AddressBook
   end
 
   def nuke
-    entries.delete_if { |entry| true }
+    entries.delete_if { |entry| true } 
   end
 
   def import_from_csv(file_name)
